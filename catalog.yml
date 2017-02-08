@@ -1,7 +1,7 @@
 PREDEF:
   - introduction.re
 CHAPS:
-  - ch01-build-flavor.re
+  - ch01-build-variants.re
 
 APPENDIX:
 
