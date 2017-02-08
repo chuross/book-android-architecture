@@ -1,5 +1,10 @@
 box: vvakame/review
 build:
   steps:
-    - rake epub
-    - cp *.epub ${WERCKER_REPORT_ARTIFACTS_DIR}
+    - script:
+      name: make epub
+      code: rake epub
+  after-steps:
+    - script:
+      name: copy artifacts
+      code: cp *.epub ${WERCKER_REPORT_ARTIFACTS_DIR}
