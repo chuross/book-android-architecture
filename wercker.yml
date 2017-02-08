@@ -1,0 +1,5 @@
+box: vvakame/review
+build:
+  steps:
+    - rake epub
+    - cp *.epub ${WERCKER_REPORT_ARTIFACTS_DIR}
