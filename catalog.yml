@@ -1,9 +1,8 @@
 PREDEF:
-
+  - introduction.re
 CHAPS:
-  - android-environments.re
+  - ch01-build-flavor.re
 
 APPENDIX:
 
 POSTDEF:
-
