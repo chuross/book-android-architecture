@@ -43,7 +43,7 @@ Gradle Android Pluginが提供している仕組み。
 
 追加するための記述自体は簡単で、Androidプロジェクトルートにあるbuild.gradleに@<b>{productFlavors}を追加するだけである。
 
-//emlist[Product FlavorsでアプリケーションIDを切り替えた例][gradle]{
+//source[Product FlavorsでアプリケーションIDを切り替えた例]{
 android {
   ....
   productFlavors {
@@ -62,7 +62,7 @@ android {
 
 以下のようなコマンドを実行することで開発と本番でアプリケーションIDを切り替えたビルドが可能になる。
 
-//emlist[ビルドの切り替え][bash]{
+//cmd{
 // 開発環境向きデバッグ
 $ ./gradlew assembleDevelopDebug
 
@@ -75,16 +75,13 @@ $ ./gradlew assembleProductionDebug
 ちなみに上記にはBuildTypeを明記していないが、@<b>{debug}と@<b>{release}のBuild TypeはAndroid Gradle Pluginがデフォルトで用意されている。
 
 == 応用編 - メモリリーク確認用ビルドを作る
-LeakCanalyを用いてメモリリークチェック用のビルドをGradleで実現する。
+LeakCanaly@<bib>{leak-canary}を用いてメモリリークチェック用のビルドをGradleで実現する。
 
 この方法を使うと、開発環境・本番環境ビルドでメモリリークしてないか事前に調べることができるので便利。
 
-: LeakCanary
-   https://github.com/square/leakcanary
-
 実際にはJavaのコードにも手を加える必要があるが、ここではbuild.gradleだけフォーカスして説明する。
 
-//emlist[LeakCanaryを導入したbuild.gradle][gradle]{
+//source[LeakCanaryを導入したbuild.gradle]{
 android {
   productFlavors {
     develop { .... }
@@ -107,7 +104,7 @@ android {
 
 上記の形でbuild.gradleを記述すると以下のような形でリークチェック用のビルドが実行できる。
 
-//emlist[リークチェック用のビルド][bash]{
+//cmd{
 $ ./gradlew assembleDevelopLeakCheck
 $ ./gradlew assembleProductionLeakCheck
 //}
