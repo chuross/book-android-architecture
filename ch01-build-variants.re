@@ -72,4 +72,4 @@ $ ./gradlew assembleProductionDebug
 
 アプリケーションIDが切り替えできると、端末内に開発向きと本番向きで別々のアプリとして同じ端末にインストールできるようになる。
 
-ちなみに@<b>{debug}と@<b>{release}のBuild TypeはAndroid Gradle Pluginが
+ちなみに@<b>{debug}と@<b>{release}のBuild TypeはAndroid Gradle Pluginがデフォルトで用意されている。
