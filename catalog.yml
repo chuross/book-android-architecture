@@ -2,6 +2,7 @@ PREDEF:
   - introduction.re
 CHAPS:
   - ch01-build-variants.re
+  - ch02-build-types.re
 
 APPENDIX:
 
