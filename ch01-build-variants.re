@@ -27,7 +27,7 @@ Gradle Android Pluginが提供している仕組み。
 : Product Flavors
    develop(開発環境)・production(本番環境)といった粒度
 
-===[column] 上記の例によって作れる組み合わせ
+===[column] 上記の例で作れる組み合わせ
 : developDebug
    開発環境向きデバッグ
 : productionDebug
