@@ -72,7 +72,7 @@ $ ./gradlew assembleProductionDebug
 
 アプリケーションIDが切り替えできると、端末内に開発向きと本番向きで別々のアプリとして同じ端末にインストールできるようになる。
 
-ちなみに@<b>{debug}と@<b>{release}のBuild TypeはAndroid Gradle Pluginがデフォルトで用意されている。
+ちなみに上記にはBuildTypeを明記していないが、@<b>{debug}と@<b>{release}のBuild TypeはAndroid Gradle Pluginがデフォルトで用意されている。
 
 == 応用編 - メモリリーク確認用ビルドを作る
 LeakCanalyを用いてメモリリークチェック用のビルドをGradleで実現する。
