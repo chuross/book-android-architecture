@@ -75,7 +75,7 @@ $ ./gradlew assembleProductionDebug
 ちなみに上記にはBuildTypeを明記していないが、@<b>{debug}と@<b>{release}のBuild TypeはAndroid Gradle Pluginがデフォルトで用意されている。
 
 == 応用編 - メモリリーク確認用ビルドを作る
-LeakCanaly@<bib>{leak-canary}を用いてメモリリークチェック用のビルドをGradleで実現する。
+LeakCanaly@<fn>{leak-canary}を用いてメモリリークチェック用のビルドをGradleで実現する。
 
 この方法を使うと、開発環境・本番環境ビルドでメモリリークしてないか事前に調べることができるので便利。
 
@@ -108,3 +108,5 @@ android {
 $ ./gradlew assembleDevelopLeakCheck
 $ ./gradlew assembleProductionLeakCheck
 //}
+
+//footnote[leak-canary][https://github.com/square/leakcanary]
