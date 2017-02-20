@@ -73,3 +73,41 @@ $ ./gradlew assembleProductionDebug
 アプリケーションIDが切り替えできると、端末内に開発向きと本番向きで別々のアプリとして同じ端末にインストールできるようになる。
 
 ちなみに@<b>{debug}と@<b>{release}のBuild TypeはAndroid Gradle Pluginがデフォルトで用意されている。
+
+== 応用編
+LeakCanalyを用いてメモリリークチェック用のビルドをGradleで実現する。
+
+この方法を使うと、開発環境・本番環境ビルドでメモリリークしてないか事前に調べることができるので便利。
+
+: LeakCanary
+   https://github.com/square/leakcanary
+
+実際にはJavaのコードにも手を加える必要があるが、ここではbuild.gradleだけフォーカスして説明する。
+
+//emlist[LeakCanaryを導入したbuild.gradle][gradle]{
+android {
+  productFlavors {
+    develop { .... }
+    production { .... }
+  }
+  ....
+  buildTypes {
+    debug { .... }
+    release { .... }
+    leakCheck { .... }
+  }
+  ...
+  dependencies {
+    leakCheckCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+  }
+}
+//}
+
+上記の形でbuild.gradleを記述すると以下のような形でリークチェック用のビルドが実行できる。
+
+//emlist[リークチェック用のビルド][bash]{
+$ ./gradlew assembleDevelopLeakCheck
+$ ./gradlew assembleProductionLeakCheck
+//}
