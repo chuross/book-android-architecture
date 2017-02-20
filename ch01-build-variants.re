@@ -17,25 +17,22 @@ Androidを開発している時に開発版と本番で細かくビルド設定�
 == Build Variantsとは何か
 Gradle Android Pluginが提供している仕組み。
 
-この仕組みを使うと、@<b>{Build Types}と@<b>{Product Flavors}という概念を組み合わせて色々なビルドを実現することができる。
+この仕組みを使うと、@<b>{Build Types}と@<b>{Product Flavors}という要素を組み合わせて色々なビルドを実現することができる。
 
 以下は必ずしもこの粒度で切る必要は無いが、使い分けの例としてはこのような感じ
 
- * Build Types
- ** debug・releaseといった粒度
- * Product Flavors
- ** develop(開発環境)・production(本番環境)といった粒度
+: Build Types
+   debug・releaseといった粒度
+
+: Product Flavors
+   develop(開発環境)・production(本番環境)といった粒度
 
 ===[column] 上記の例によって作れる組み合わせ
- * developDebug
- ** 開発環境向きデバッグ
- * productionDebug
- ** 本番環境向きデバッグ
- * productionRelease
- ** リリースビルド
- ** 本番向きデバッグとの違い
- *** GoogleAnalyticsを切り替えたり
- *** Crashlyticsを切り替えたり
+@<b>{developDebug}: 開発環境向きデバッグ
+@<b>{productionDebug}: 本番環境向きデバッグ
+@<b>{productionRelease}: リリースビルド
+
+本番向きデバッグとの違いはProguardの有無やGoogleAnalytics向き先など
 ===[/column]
 
 == build.gradleにBuild Variantsを追加する
@@ -70,4 +67,4 @@ $ ./gradlew assembleDevelopDebug
 $ ./gradlew assembleProductionDebug
 //}
 
-アプリケーションIDが切り替えできると、端末内に開発向きと本番向きで別々に同じ端末にインストールできるようになる。
+アプリケーションIDが切り替えできると、端末内に開発向きと本番向きで別々のアプリとして同じ端末にインストールできるようになる。
