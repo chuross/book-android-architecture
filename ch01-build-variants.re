@@ -28,9 +28,12 @@ Gradle Android Pluginが提供している仕組み。
    develop(開発環境)・production(本番環境)といった粒度
 
 ===[column] 上記の例によって作れる組み合わせ
-@<b>{developDebug}: 開発環境向きデバッグ
-@<b>{productionDebug}: 本番環境向きデバッグ
-@<b>{productionRelease}: リリースビルド
+: developDebug
+   開発環境向きデバッグ
+: productionDebug
+   本番環境向きデバッグ
+: productionRelease
+   リリースビルド
 
 本番向きデバッグとの違いはProguardの有無やGoogleAnalytics向き先など
 ===[/column]
@@ -68,3 +71,5 @@ $ ./gradlew assembleProductionDebug
 //}
 
 アプリケーションIDが切り替えできると、端末内に開発向きと本番向きで別々のアプリとして同じ端末にインストールできるようになる。
+
+ちなみに@<b>{debug}と@<b>{release}のBuild TypeはAndroid Gradle Pluginが
