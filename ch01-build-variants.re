@@ -74,7 +74,7 @@ $ ./gradlew assembleProductionDebug
 
 ちなみに@<b>{debug}と@<b>{release}のBuild TypeはAndroid Gradle Pluginがデフォルトで用意されている。
 
-== 応用編
+== 応用編 - メモリリーク確認用ビルドを作る
 LeakCanalyを用いてメモリリークチェック用のビルドをGradleで実現する。
 
 この方法を使うと、開発環境・本番環境ビルドでメモリリークしてないか事前に調べることができるので便利。
