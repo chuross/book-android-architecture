@@ -3,7 +3,7 @@ build:
   steps:
     - script:
       name: make epub
-      code:|
+      code: |
         cd articles
         rake epub
   after-steps:
