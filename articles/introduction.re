@@ -19,5 +19,4 @@
  ** 依存ライブラリを記述するとかProguard設定する時に書いた程度でOK
 
 == 著者について
-//indepimage[1][著者][scale=0.3]
 ちゅろっす / @chuross
