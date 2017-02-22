@@ -28,6 +28,7 @@ Gradle Android Pluginが提供している仕組み。
    develop(開発環境)・production(本番環境)といった粒度
 
 ===[column] 上記の例で作れる組み合わせ
+
 : developDebug
    開発環境向きデバッグ
 : productionDebug
@@ -36,6 +37,7 @@ Gradle Android Pluginが提供している仕組み。
    リリースビルド
 
 本番向きデバッグとの違いはProguardの有無やGoogleAnalytics向き先など
+
 ===[/column]
 
 == build.gradleにBuild Variantsを追加する

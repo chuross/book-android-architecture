@@ -79,7 +79,9 @@ android {
 //}
 
 ====[column] Product Flavors毎にリボンを付ける
+
 本文
+
 ====[/column]
 
 
