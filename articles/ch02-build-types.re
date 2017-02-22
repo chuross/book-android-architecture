@@ -23,7 +23,6 @@ Manifest PlaceholderはAndroidManifest.xml内にあるプレースホルダー�
 今回は２つのファイルに手を加える。
 
  * AndroidManifest.xml
- ** labelに@<b>{${appName\}}の記述を追加
  * build.gradle
 
 //source[AndroidManifest.xml]{
@@ -52,3 +51,36 @@ android {
 //}
 
 === Gradle Pluginを用いて色付きのリボンで分ける
+gradle-android-ribbonizer-plugin@<fn>{ribbonizer-plugin}というGradle Pluginを用いることで、ビルド時にアプリのアイコンに処理を加えてリボンを付けるライブラリがある。
+
+使い方も非常に簡単でpluginを有効化するだけで自動的にリボンを付けてくれるようになる。
+
+//source[build.gradle]{
+apply plugin: 'com.android.application'
+apply plugin: 'com.github.gfx.ribbonizer'
+....
+buildscript {
+  dependencies {
+    classpath 'com.android.tools.build:gradle:2.2.3'
+    classpath 'com.github.gfx.ribbonizer:plugin:1.0.0'
+  }
+}
+android {
+  buildTypes {
+    debug { /* 自動的にリボンが付く */ }
+    release { /* リボンが付かない */ }
+  }
+}
+//}
+
+これをデバッグビルドで実行した後、端末にインストールするとこのような感じでアイコンを表示してくれる。
+
+//image[1][リボンがついて見分けやすくなった]{
+//}
+
+====[column] Product Flavors毎にリボンを付ける
+本文
+====[/column]
+
+
+//footnote[ribbonizer-plugin][https://github.com/gfx/gradle-android-ribbonizer-plugin]
