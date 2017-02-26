@@ -45,7 +45,9 @@ Gradle Android Pluginが提供している仕組み。
 
 追加するための記述自体は簡単で、Androidプロジェクトルートにあるbuild.gradleに@<b>{productFlavors}を追加するだけである。
 
-//source[Product FlavorsでアプリケーションIDを切り替えた例]{
+Product FlavorsでアプリケーションIDを切り替えた例にする。
+
+//list[product-flabor-build][build.gradle]{
 android {
   ....
   productFlavors {
@@ -83,7 +85,7 @@ LeakCanaly@<fn>{leak-canary}を用いてメモリリークチェック用のビ�
 
 実際にはJavaのコードにも手を加える必要があるが、ここではbuild.gradleだけフォーカスして説明する。
 
-//source[LeakCanaryを導入したbuild.gradle]{
+//list[leakcanary-build][build.gradle]{
 android {
   productFlavors {
     develop { .... }

@@ -25,7 +25,7 @@ Manifest PlaceholderはAndroidManifest.xml内にあるプレースホルダー�
  * AndroidManifest.xml
  * build.gradle
 
-//source[AndroidManifest.xml]{
+//list[placeholder-manifest][AndroidManifest.xml]{
 <?xml version="1.0" encoding="utf-8"?>
 <manifest>
   ....
@@ -36,7 +36,7 @@ Manifest PlaceholderはAndroidManifest.xml内にあるプレースホルダー�
 </manifest>
 //}
 
-//source[build.gradle]{
+//list[placeholder-build][build.gradle]{
 android {
   ....
   productFlavors {
@@ -55,7 +55,7 @@ gradle-android-ribbonizer-plugin@<fn>{ribbonizer-plugin}というGradle Plugin�
 
 使い方も非常に簡単でpluginを有効化するだけで自動的にリボンを付けてくれるようになる。
 
-//source[build.gradle]{
+//list[plugin-build][build.gradle]{
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.gfx.ribbonizer'
 ....
