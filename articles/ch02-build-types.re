@@ -80,7 +80,28 @@ android {
 
 ====[column] Product Flavors毎にリボンを付ける
 
-本文
+build.gradle内に@<b>{ribbonizer}の項目を追加すれば細かい設定を定義できる。
+
+//list[ribbonizer-option][build.gradle]{
+android {
+  ....
+}
+ribbonizer {
+  builder { variant, iconFile ->
+    if (variant.flavorName == "develop") {
+        return yellowRibbonFilter(variant, iconFile)
+    } else {
+      return greenRibbonFilter(variant, iconFile)
+    }
+  }
+}
+//}
+
+developのProduction Flavorの時は黄色のリボンで表示する。
+
+それ以外のデバッグビルドは緑色のリボンで表示されるようになる。
+
+このような感じで細かく色も指定することで、より見分けが付きやすくなるので是非利用していきたい。
 
 ====[/column]
 
