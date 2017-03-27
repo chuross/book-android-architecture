@@ -1,4 +1,4 @@
-= DeployGateを使って開発中のアプリをβ配信しよう
+= DeployGateを使って開発中のアプリを企画やデザイナーに見せる
 アプリの開発が進んでくると、開発途中の成果を他の人に見てもらいたい場合がある。
 
 特に会社のプロダクト開発では企画やデザイナーに動作確認の過程で見せることが多いのではないだろうか。
@@ -33,4 +33,61 @@ DeployGateから公式のGradle Pluginが提供されている。
 
 リンク先は配布用ページなので、関係者が自分で配布用ページからβ配信の動作確認が行えるようになっている。
 
+== DeployGateの導入方法
+アカウント作成については割愛する。
+
+Gradle Plugin経由からβ配信するためのAPIキーは@<b>{アカウント設定}から行える。
+
+=== 自分のプロダクトに組み込む
+AndroidでDeployGateを使うならDeployGate Gradle Plugin@<fn>{deploygate-plugin}を使うと簡単に導入できる。
+
+今回もDeployGate Gradle Pluginを用いて説明する。
+
+まずはプロジェクトルートのbuild.gradleの@<b>{buildscript}の項目にDeployGate Gradle Pluginのクラスパスを通す。
+
+//list[deploygate-plugin-root][build.gradle]{
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.deploygate:gradle:1.1.0'
+  }
+}
+//}
+
+プラグインのバージョンはこれより新しくなっている場合もあるので、Githubのリポジトリを確認して適宜変更すること。
+
+その後はモジュールのbuild.gradleにプラグインの適用と設定を記述していく。
+
+//list[deploygate-plugin-module][build.gradle]{
+apply plugin: 'deploygate'
+
+deploygate {
+  userName = "DeployGateのユーザー名"
+  token = "アカウント情報で確認できるAPIトークン"
+  apks {
+    debug {
+      distributionKey = "DeployGateの配布ページなどで確認できるAPKのアップロード先のキー"
+      sourceFile = file("アップロードするAPKのファイルパス")
+    }
+  }
+}
+//}
+
+@<b>{apks}の部分はBuild Variantsを指定して細かく設定を書ける。
+
+=== APKをDeployGateにアップロードする
+ここまで準備ができたら実際にAPKをアップロードしてみよう。
+
+先ほどのbuild.gradleへの記述でGradleのタスクが増えているので、それを実行するだけでアップロードができる。
+
+//cmd{
+./gradlew uploadDeployGateDebug
+
+// 前の章などでProductFlavorを定義していた場合
+./gradlew uploadDeployGateDevelopDebug
+//}
+
 //footnote[deploygate][https://deploygate.com]
+//footnote[deploygate-plugin][https://github.com/DeployGate/gradle-deploygate-plugin]
