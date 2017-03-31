@@ -6,7 +6,10 @@ build:
       code: |
         cd articles
         rake epub
+        rake pdf
   after-steps:
     - script:
       name: copy artifacts
-      code: cp articles/*.epub ${WERCKER_REPORT_ARTIFACTS_DIR}
+      code: |
+        cp articles/*.epub ${WERCKER_REPORT_ARTIFACTS_DIR}
+        cp articles/*.pdf ${WERCKER_REPORT_ARTIFACTS_DIR}
