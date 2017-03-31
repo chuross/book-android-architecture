@@ -68,7 +68,6 @@ deploygate {
   token = "アカウント情報で確認できるAPIトークン"
   apks {
     debug {
-      distributionKey = "DeployGateの配布ページなどで確認できるAPKのアップロード先のキー"
       sourceFile = file("アップロードするAPKのファイルパス")
     }
   }
@@ -88,6 +87,53 @@ deploygate {
 // 前の章などでProductFlavorを定義していた場合
 ./gradlew uploadDeployGateDevelopDebug
 //}
+
+== アップロードしたAPKを配信する
+ここまでの作業でDeployGateにアップロードするところまでできた。
+
+次は配布ページを作成して他の人の端末にインストールしてもらえる環境を作る。
+
+DeployGateにログインしてダッシュボードを見に行くと、先ほどアップロードしたアプリが表示されているはず。
+
+リンクを押してアプリのページに遷移すると、このような感じのページが表示される。
+
+//image[1][DeployGateのダッシュボード]{
+//}
+
+ページの右にある@<b>{共有用のリンクを追加}を押すと配布用のページが生成されるので、必要に応じてパスワードを書けるなどの設定をすると良い。
+
+あとはこのURLを企画・デザイナーに共有すればQRコードなどからAPKを入れて確認することができるようになる。
+
+動作確認時はGooglePlayストアで配信されているDeployGateのアプリが必要になるが、QRコードを読み込んだ先の画面で一つ一つ丁寧に案内してくれるので問題は無いだろう。
+
+== Gradleから直接配布ページを更新する
+配布ページまでできたら、後はGradleコマンド経由で配布ページを更新できるようにしよう。
+
+この処理ができれば、あとは機能が実装できたタイミングでGradleコマンドを実行するだけで動作確認してもらえる環境が整う。
+
+これをするためには@<b>{distributionKey}という値をbuild.gradleに記述する必要があるが、特に新しい作業は必要ない。
+
+先ほど作成した配布用のページに遷移した先のURLの部分がdistributionKeyの値となる。
+
+//cmd{
+https://deploygate.com/distributions/{:distributionKey}
+//}
+
+distributionKeyが分かればあとはbuild.gradleに記述するだけである。
+
+//list[deploy-gate-destributionkey][DestributionKeyを追加して配布ページを更新できるようにする]{
+deploygate {
+  ....
+  apks {
+    debug {
+      ....
+      distributionKey = "ここにdistributionKeyの値を書く"
+    }
+  }
+}
+//}
+
+ここまでできれば@<b>{./gradlew uploadDeployGateDevelopDebug}などのコマンドでDeployGateのアップロード用コマンドを実行すれば自動的に配布ページも更新されるようになる。
 
 //footnote[deploygate][https://deploygate.com]
 //footnote[deploygate-plugin][https://github.com/DeployGate/gradle-deploygate-plugin]

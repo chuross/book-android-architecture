@@ -4,7 +4,7 @@ CHAPS:
   - Gradleを活用して開発を効率化する:
     - ch01-build-variants.re
     - ch02-build-types.re
-    - ch03-deploygate.re
+    - ch04-deploygate.re
 
 APPENDIX:
 
