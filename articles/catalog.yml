@@ -6,8 +6,6 @@ CHAPS:
     - ch02-build-types.re
     - ch03-gradle-config.re
     - ch04-deploygate.re
-  - AnnotationProcessorを活用して開発を効率化する:
-    - ch05-fragment-args.re
 
 APPENDIX:
 
